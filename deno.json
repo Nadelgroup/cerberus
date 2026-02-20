@@ -1,0 +1,12 @@
+{
+  "name": "catcaster",
+  "version": "1.0.0",
+  "tasks": {
+    "dev": "deno run --watch --allow-net --allow-read --allow-env main.ts",
+    "start": "deno run --allow-net --allow-read --allow-env main.ts"
+  },
+  "fmt": {
+    "semiColons": true,
+    "singleQuote": false
+  }
+}
