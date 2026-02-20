@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>catcaster</title>
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <div class="brand">catcaster</div>
+        <div class="sub">WebSocket cat stream + SSE dashboard + config hot-reload</div>
+      </div>
+      <div class="pills">
+        <a class="pill" href="/api/cat/preview" target="_blank" rel="noreferrer">Preview cat</a>
+        <a class="pill" href="/files/sample.txt" target="_blank" rel="noreferrer">View sample file</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <div class="cardHead">
+          <div class="title">Stream</div>
+          <div class="muted" id="status">disconnected</div>
+        </div>
+
+        <div class="controls">
+          <button id="btnConnect">Connect</button>
+          <button id="btnClose" class="ghost">Close</button>
+
+          <label class="lab">
+            Mode
+            <select id="modeSel">
+              <option value="url">url</option>
+              <option value="bin">bin</option>
+            </select>
+          </label>
+
+          <label class="lab">
+            Interval (ms)
+            <input id="intervalInp" type="number" min="200" max="60000" value="2500" />
+          </label>
+
+          <button id="btnApply" class="ghost">Apply</button>
+        </div>
+
+        <div class="imgWrap">
+          <img id="catImg" alt="cat" />
+        </div>
+
+        <div class="console">
+          <div class="consoleRow">
+            <input id="cmdInp" placeholder='Type "help" or "interval 1200" or "mode bin"' />
+            <button id="btnSend">Send</button>
+          </div>
+          <pre id="log" class="log"></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHead">
+          <div class="title">Info</div>
+          <div class="muted">live</div>
+        </div>
+
+        <div class="kv">
+          <div class="k">Target IP (from default.cfg)</div>
+          <div class="v">
+            <span id="targetIp">—</span>
+            <button class="mini" id="btnCopyIp">Copy</button>
+          </div>
+
+          <div class="k">Uptime</div><div class="v" id="uptime">—</div>
+          <div class="k">Clients</div><div class="v" id="clients">—</div>
+          <div class="k">Cats sent</div><div class="v" id="catsSent">—</div>
+          <div class="k">Mood</div><div class="v" id="mood">—</div>
+        </div>
+
+        <div class="hint">
+          <strong>Cool bits:</strong>
+          <ul>
+            <li>Config file hot-reloads and pushes updates to WS + SSE</li>
+            <li>Per-client interval + per-client mode</li>
+            <li>SSE “pulse” stream for dashboards</li>
+            <li>File viewer at <code>/files/...</code></li>
+          </ul>
+          <div class="muted">No connection is ever made to the target IP — it’s display-only.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span class="muted">WS: <code>/ws</code></span>
+      <span class="muted">SSE: <code>/events</code></span>
+      <span class="muted">API: <code>/api/stats</code></span>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
