@@ -1,0 +1,7 @@
+This is a sample file from ./data/sample.txt
+
+Cool feature:
+- Open /files/sample.txt to view it in a tiny HTML viewer.
+- This demonstrates “do something with file content serve it”.
+
+You can add more files into /data and open them via /files/<name>.
